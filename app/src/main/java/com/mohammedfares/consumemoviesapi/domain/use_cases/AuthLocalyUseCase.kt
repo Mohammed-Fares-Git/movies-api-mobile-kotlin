@@ -1,29 +1,35 @@
 package com.mohammedfares.consumemoviesapi.domain.use_cases
 
+import com.mohammedfares.consumemoviesapi.comon.Auth
 import com.mohammedfares.consumemoviesapi.comon.AuthManager
 import com.mohammedfares.consumemoviesapi.comon.Resourse
-import com.mohammedfares.consumemoviesapi.data.remote.AuthService
-import com.mohammedfares.consumemoviesapi.domain.models.AuthRequest
-import com.mohammedfares.consumemoviesapi.domain.models.AuthResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class AuthUseCase @Inject constructor(
-    val api: AuthService,
+class AuthLocalyUseCase @Inject constructor(
     val authManager: AuthManager
 ) {
-    operator fun invoke(authRequest: AuthRequest): Flow<Resourse<AuthResponse>> = flow {
-        emit( Resourse.Loading())
+    operator fun invoke(): Flow<Auth> = flow {
         try {
-            val authResponse = api.authenticateUser(authRequest)
-            authManager.login(authResponse)
-            emit(Resourse.Success(authResponse))
+            val isUserAuthenticated = authManager.isUserAuthenticated()
+            if (isUserAuthenticated){
+                emit(Auth.Authenticated(
+                    authManager.username!!,
+                    authManager.firstName!!,
+                    authManager.lastName!!,
+                    authManager.image!!,
+                    authManager.token!!
+                ))
+            }
+            else {
+                emit(Auth.UnAuthenticated)
+            }
         } catch (e: Exception) {
-            emit(Resourse.Error(e.message.toString()))
+            emit(Auth.UnAuthenticated)
         }
     }.catch {
-        emit(Resourse.Error(it.message.toString()))
+        emit(Auth.UnAuthenticated)
     }
 }
