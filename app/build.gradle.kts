@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.mohammedfares.consumemoviesapi"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.mohammedfares.consumemoviesapi"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -51,6 +51,16 @@ android {
     }
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+tasks.withType<JavaCompile> {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -77,6 +87,13 @@ dependencies {
     //di
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    //Icons
+    implementation("androidx.compose.material:material-icons-extended")
+
 }
 
 kapt {
