@@ -23,25 +23,25 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SigninForm() {
+fun AddMovieForm() {
 
-    var userName by remember {
+    var movieName by remember {
         mutableStateOf("")
     }
 
-    var firstName by remember {
+    var movieDesc by remember {
         mutableStateOf("")
     }
 
-    var lastName by remember {
+    var movieImage by remember {
         mutableStateOf("")
     }
 
-    var image by remember {
-        mutableStateOf("")
+    var moveiPrice by remember {
+        mutableStateOf(0.0)
     }
 
-    var password by remember {
+    var movieYear by remember {
         mutableStateOf("")
     }
 
@@ -51,37 +51,37 @@ fun SigninForm() {
         verticalArrangement = Arrangement.Center
     ) {
         OutlinedTextField(
-            value = userName,
-            onValueChange = { userName = it },
+            value = movieName,
+            onValueChange = { movieName = it },
             label = { Text(text = "Username") })
 
         Spacer(modifier = Modifier.height(25.dp))
 
         OutlinedTextField(
-            value = firstName,
-            onValueChange = { firstName = it },
+            value = movieDesc,
+            onValueChange = { movieDesc = it },
             label = { Text(text = "Username") })
 
         Spacer(modifier = Modifier.height(25.dp))
 
         OutlinedTextField(
-            value = lastName,
-            onValueChange = { lastName = it },
+            value = movieImage,
+            onValueChange = { movieImage = it },
             label = { Text(text = "Username") })
 
         Spacer(modifier = Modifier.height(25.dp))
 
         OutlinedTextField(
-            value = image,
-            onValueChange = { image = it },
+            value = movieYear,
+            onValueChange = { movieYear = it },
             label = { Text(text = "Username") })
 
         Spacer(modifier = Modifier.height(25.dp))
 
 
         OutlinedTextField(
-            value = userName,
-            onValueChange = { userName = it },
+            value = moveiPrice.toString(),
+            onValueChange = { moveiPrice = it.toDouble() },
             label = { Text(text = "Username") })
 
         Spacer(modifier = Modifier.height(25.dp))

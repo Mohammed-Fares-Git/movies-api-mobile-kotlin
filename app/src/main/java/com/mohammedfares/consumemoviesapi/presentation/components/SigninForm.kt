@@ -18,13 +18,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginForm() {
+fun SigninForm() {
 
     var userName by remember {
+        mutableStateOf("")
+    }
+
+    var firstName by remember {
+        mutableStateOf("")
+    }
+
+    var lastName by remember {
+        mutableStateOf("")
+    }
+
+    var image by remember {
         mutableStateOf("")
     }
 
@@ -45,6 +58,28 @@ fun LoginForm() {
         Spacer(modifier = Modifier.height(25.dp))
 
         OutlinedTextField(
+            value = firstName,
+            onValueChange = { firstName = it },
+            label = { Text(text = "Username") })
+
+        Spacer(modifier = Modifier.height(25.dp))
+
+        OutlinedTextField(
+            value = lastName,
+            onValueChange = { lastName = it },
+            label = { Text(text = "Username") })
+
+        Spacer(modifier = Modifier.height(25.dp))
+
+        OutlinedTextField(
+            value = image,
+            onValueChange = { image = it },
+            label = { Text(text = "Username") })
+
+        Spacer(modifier = Modifier.height(25.dp))
+
+
+        OutlinedTextField(
             value = userName,
             onValueChange = { userName = it },
             label = { Text(text = "Username") })
@@ -54,3 +89,5 @@ fun LoginForm() {
         OutlinedButton(onClick = {  }, content = { Text(text = "LogIn")})
     }
 }
+
+

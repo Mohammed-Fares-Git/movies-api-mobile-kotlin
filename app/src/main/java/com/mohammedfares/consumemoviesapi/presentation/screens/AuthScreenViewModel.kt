@@ -1,4 +1,6 @@
 package com.mohammedfares.consumemoviesapi.presentation.screens
 
-class AuthScreenViewModel {
+import androidx.lifecycle.ViewModel
+
+class AuthScreenViewModel: ViewModel() {
 }
