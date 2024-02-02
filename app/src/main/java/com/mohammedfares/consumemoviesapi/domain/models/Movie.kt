@@ -6,5 +6,6 @@ data class Movie(
     val id: Int,
     val image: String,
     val name: String,
-    val price: Double
+    val price: Double,
+    val stars: Int
 )
