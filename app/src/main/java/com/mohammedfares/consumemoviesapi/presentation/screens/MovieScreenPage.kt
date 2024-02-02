@@ -1,5 +1,6 @@
 package com.mohammedfares.consumemoviesapi.presentation.screens
 
-import androidx.compose.runtime.Composable
-
-sealed class MovieScreenPage
+sealed class MovieScreenPage{
+    object Add: MovieScreenPage()
+    object List: MovieScreenPage()
+}
