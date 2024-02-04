@@ -20,10 +20,11 @@ import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mohammedfares.consumemoviesapi.domain.models.RegisterRequest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SigninForm() {
+fun SigninForm(registerAction: (RegisterRequest)->Unit) {
 
     var userName by remember {
         mutableStateOf("")
@@ -86,7 +87,7 @@ fun SigninForm() {
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        OutlinedButton(onClick = {  }, content = { Text(text = "LogIn")})
+        OutlinedButton(onClick = { registerAction( RegisterRequest(firstName,lastName,userName,password,image) ) }, content = { Text(text = "LogIn")})
     }
 }
 

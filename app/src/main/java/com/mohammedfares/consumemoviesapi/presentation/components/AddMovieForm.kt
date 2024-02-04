@@ -20,10 +20,11 @@ import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mohammedfares.consumemoviesapi.domain.models.Movie
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddMovieForm() {
+fun AddMovieForm(actionAdd: (movie: Movie)-> Unit) {
 
     var movieName by remember {
         mutableStateOf("")
@@ -78,7 +79,6 @@ fun AddMovieForm() {
 
         Spacer(modifier = Modifier.height(25.dp))
 
-
         OutlinedTextField(
             value = moveiPrice.toString(),
             onValueChange = { moveiPrice = it.toDouble() },
@@ -86,7 +86,17 @@ fun AddMovieForm() {
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        OutlinedButton(onClick = {  }, content = { Text(text = "LogIn")})
+        OutlinedButton(onClick = {
+                                 actionAdd( Movie(
+                                     null,
+                                     movieName,
+                                     movieDesc,
+                                     moveiPrice,
+                                     movieImage,
+                                     movieYear,
+                                     3
+                                 ) )
+        }, content = { Text(text = "LogIn")})
     }
 }
 

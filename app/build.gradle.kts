@@ -85,8 +85,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //di
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-compiler:2.50")
+    implementation("com.google.dagger:hilt-android:2.49")
+    kapt("com.google.dagger:hilt-compiler:2.49")
 
     //coil
     implementation("io.coil-kt:coil-compose:2.5.0")
@@ -97,5 +97,6 @@ dependencies {
 }
 
 kapt {
+    useBuildCache = false
     correctErrorTypes = true
 }

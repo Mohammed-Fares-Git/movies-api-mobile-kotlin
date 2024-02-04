@@ -29,7 +29,7 @@ fun MovieScreen(viewModel: MovieScreenViewModel, user: Auth.Authenticated) {
     )
     { padding ->
         when(screen.value) {
-            MovieScreenPage.Add -> AddMovieForm()
+            MovieScreenPage.Add -> AddMovieForm {}
             MovieScreenPage.List -> MovieList(movies = emptyList(), paddin = padding)
         }
     }

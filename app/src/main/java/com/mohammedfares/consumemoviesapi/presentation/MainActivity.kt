@@ -35,7 +35,8 @@ class MainActivity : ComponentActivity() {
                 val auth = mainViewModel.authState.collectAsState()
 
                 when (auth.value){
-                    is Auth.Authenticated -> MovieScreen()
+                    is Auth.Authenticated -> {
+                        Text(text = "main screen")}
                     Auth.UnAuthenticated -> AuthScreen(viewModel = authScreenViewModel)
                 }
 

@@ -19,10 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.unit.dp
+import com.mohammedfares.consumemoviesapi.domain.models.AuthRequest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginForm() {
+fun LoginForm(loginAction: (authRequest: AuthRequest)->Unit) {
 
     var userName by remember {
         mutableStateOf("")
@@ -51,6 +52,6 @@ fun LoginForm() {
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        OutlinedButton(onClick = {  }, content = { Text(text = "LogIn")})
+        OutlinedButton(onClick = { loginAction(AuthRequest(userName,password)) }, content = { Text(text = "LogIn")})
     }
 }

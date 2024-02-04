@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.mohammedfares.consumemoviesapi.comon.Auth
 import com.mohammedfares.consumemoviesapi.domain.use_cases.AuthLocalyUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private val _AuthState = mutableStateOf<Auth>(Auth.UnAuthenticated)
+    private val _AuthState = MutableStateFlow<Auth>(Auth.UnAuthenticated)
     val authState = _AuthState as StateFlow<Auth>
 
 }
