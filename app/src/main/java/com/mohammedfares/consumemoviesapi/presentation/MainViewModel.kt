@@ -16,6 +16,8 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     val auth: AuthLocalyUseCase
 ): ViewModel() {
+    private val _AuthState = MutableStateFlow<Auth>(Auth.UnAuthenticated)
+    val authState = _AuthState as StateFlow<Auth>
     init {
         viewModelScope.launch {
             auth().collect {
@@ -24,7 +26,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private val _AuthState = MutableStateFlow<Auth>(Auth.UnAuthenticated)
-    val authState = _AuthState as StateFlow<Auth>
+
 
 }

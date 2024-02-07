@@ -12,6 +12,7 @@ import com.mohammedfares.consumemoviesapi.domain.use_cases.RegisterUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
@@ -33,7 +34,7 @@ class AuthScreenViewModel @Inject constructor(
 
 
     private val _LoginStateFlow = MutableStateFlow<Resourse<AuthResponse>>(Resourse.Empty())
-    val loginStateFlow: StateFlow<Resourse<AuthResponse>> = _RegisterStateFlow
+    val loginStateFlow = _LoginStateFlow.asStateFlow()
 
 
 
@@ -48,9 +49,11 @@ class AuthScreenViewModel @Inject constructor(
         }
     }
 
-    fun authUser(authRequest: AuthRequest) = viewModelScope.launch {
-        authUserUseCase(authRequest).collect {
-            _LoginStateFlow.value = it
+    fun authUser(authRequest: AuthRequest) {
+        viewModelScope.launch {
+            authUserUseCase(authRequest).collect {
+                _LoginStateFlow.value = it
+            }
         }
     }
 

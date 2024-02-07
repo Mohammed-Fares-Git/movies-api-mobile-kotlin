@@ -14,7 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.mohammedfares.consumemoviesapi.comon.Auth
 import com.mohammedfares.consumemoviesapi.presentation.screens.AuthScreen
 import com.mohammedfares.consumemoviesapi.presentation.screens.AuthScreenViewModel
@@ -36,27 +38,11 @@ class MainActivity : ComponentActivity() {
 
                 when (auth.value){
                     is Auth.Authenticated -> {
-                        Text(text = "main screen")}
+                        Text(text = "main screen", fontSize = 40.sp, fontWeight = FontWeight.Bold)}
                     Auth.UnAuthenticated -> AuthScreen(viewModel = authScreenViewModel)
                 }
 
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ConsumeMoviesApiTheme {
-        Greeting("Android")
     }
 }

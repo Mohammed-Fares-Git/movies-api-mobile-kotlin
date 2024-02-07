@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.mohammedfares.consumemoviesapi.domain.models.Movie
-import com.mohammedfares.consumemoviesapi.presentation.Greeting
 import com.mohammedfares.consumemoviesapi.presentation.ui.theme.ConsumeMoviesApiTheme
 
 @Composable
